@@ -10,28 +10,20 @@ currentTime = 0.0
 currentSignal = 0
 setpoint = 4.5
 
-k = 10
-kA = 0.1
-output = 0
-sum_error = 0
-tolerance = 0.001
-change = True
+
+
 
 while(currentTime < 10.0):
   valveFlowSensorValue = myWaterValve.getFlowRate()
   
-  if(change):
-    error = setpoint - myWaterValve.getFlowRate()
-    sum_error += error
-    output += k*error
-    myWaterValve.setSignal(output)
-    
-  if(myWaterValve.getFlowRate()+tolerance > setpoint and myWaterValve.getFlowRate()-tolerance < setpoint):
-    change = False
+  if (valveFlowSensorValue > setpoint):
+    currentSignal -= 3
+   
+  elif (valveFlowSensorValue < setpoint):
+    currentSignal += 3
   
-  output += kA * error
+  myWaterValve.setSignal(currentSignal)
   print(currentTime,",",valveFlowSensorValue)
   currentTime += 0.1
   
-print(change)
-print(myWaterValve.getFlowRate()+tolerance > setpoint and myWaterValve.getFlowRate()-tolerance < setpoint)
+
