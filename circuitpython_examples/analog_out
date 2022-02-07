@@ -9,3 +9,4 @@ while True:
     # which ends up corresponding to the DAC's 10-bit range
     for i in range(0, 65535, 64):
         analog_out.value = i
+#With the incresement of 64, it will start from 0 until it reachs 65535.
