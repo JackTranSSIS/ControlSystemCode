@@ -6,11 +6,14 @@ from digitalio import DigitalInOut, Direction, Pull
 # LED setup.
 led = DigitalInOut(board.LED)
 
+
 led.direction = Direction.OUTPUT
 
 # Switch setup
 switch = DigitalInOut(board.D2)
+#Creates a digital input or output connected to pin board.D2
 switch.direction = Direction.INPUT
+#Sets a digital input or output as an input
 switch.pull = Pull.UP
 
 while True:
@@ -19,5 +22,6 @@ while True:
         led.value = False
     else:
         led.value = True
+#Returning value of the digital input or output connected to the pin board
 
     time.sleep(0.01)  # debounce delay
