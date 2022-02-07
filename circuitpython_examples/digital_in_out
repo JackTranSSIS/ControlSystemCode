@@ -25,3 +25,4 @@ while True:
 #Returning value of the digital input or output connected to the pin board
 
     time.sleep(0.01)  # debounce delay
+#If there is an on switch, the led will not be turned on, but if there isn't, the led will be turned on.
