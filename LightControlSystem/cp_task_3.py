@@ -1,10 +1,11 @@
 import board
 from analogio import AnalogOut, AnalogIn
 
+light_sensor = AnalogIn(board.A1)
 led = AnalogOut(board.A0)
 
-light_sensor = AnalogIn(board.A1)
+
 
 while True:
-  led.value = (65535/light_sensor.value)
+  led.value = (light_sensor.value + 100)
   
